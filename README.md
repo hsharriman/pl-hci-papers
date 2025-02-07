@@ -2,6 +2,7 @@
 
 - Added [YAML Parser](https://www.npmjs.com/package/yaml)
 - Added Tailwind
+- To get started: run `npm install` and then `npm run dev`!
 
 # React + TypeScript + Vite
 
