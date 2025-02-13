@@ -1,0 +1,51 @@
+{
+    "papers": [
+        {
+            "title": "PL+HCI: Better Together",
+            "date":"1/2/26",
+            "author": "Chasins, Sarah E. and Glassman, Elena L. and Sunshine, Joshua",
+            "venue": "Test Venue",
+            "link":"https://dl.acm.org/doi/10.1145/3469279",
+            "doi": "",
+            "keywords":["keyword1","keyword2","keyword3"],
+            "summary":"Test Summary",
+            "contributionType": "Vision Article",
+            "methods":"Vision",
+            "notes": "TestNotes",
+            "abstract": ""
+        },
+        {
+            "title": "Test Title 2 ",
+            "date":"1/2/26",
+            "author": "Chasins, Sarah E. and Glassman, Elena L. and Sunshine, Joshua",
+            "venue": "Test Venue",
+            "link":"https://dl.acm.org/doi/10.1145/3469279",
+            "doi": "",
+            "keywords":["keyword1","keyword2","keyword3"],
+            "summary":"Test Summary",
+            "contributionType": "Vision Article",
+            "methods":"Vision",
+            "notes": "TestNotes",
+            "abstract": ""
+
+        },
+        {
+            "title": "How Statically-Typed Functional Programmers Write Code",
+            "date":"1/2/26",
+            "author": "Justin Lubin and Sarah Chasins",
+            "venue": "Test Venue",
+            "link":"https://jlubin.net/assets/oopsla21.pdf",
+            "doi":"",
+            "keywords":["keyword1","keyword2","keyword3"],
+            "summary":"Test Summary",
+            "contributionType": "Vision Article",
+            "methods":"Vision",
+            "notes": "TestNotes",
+            "abstract": ""
+        }
+
+
+
+
+    ]
+}
