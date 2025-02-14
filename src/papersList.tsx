@@ -16,9 +16,10 @@ function PapersList({papers, keywordFilter}: Props) {
       <div className="text-black">
         {papersToRender.map((paper) => {
                 return (
+                    <li key={paper.id}>
                     <div className="grow items-left text-left md:justify-between pl-5">
-                    <h1 className="text-base text-bold mb-0 leading-snug">
-                      <span className="text-base">
+                    <h1 className="text-base/0 text-bold mb-0">
+                      <span className="text-base leading-0">
                       {paper.title}
                       </span>
                       &ensp;
@@ -70,7 +71,7 @@ function PapersList({papers, keywordFilter}: Props) {
                         </div>
                     </div> */}
                     </div>
-          
+                    </li>
                     )
 
         })}

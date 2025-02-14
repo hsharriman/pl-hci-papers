@@ -1,5 +1,7 @@
-type PaperType = {
+import { UUID } from "crypto";
 
+type PaperType = {
+    id: UUID
     // Info 
     title: string
     date: string
