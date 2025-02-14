@@ -13,8 +13,8 @@ const Header = () => {
         <section className="text-2 text-lg sm:text-lg tracking-tighter text-center leading-tight pl-4 md:pl-0 pr-1 pt-4 justify-self-right">
           <ul className="flex">
             <li className="mr-6 flex-none">
-              <a className=" hover:text-gray-500" href="/">
-                Page
+              <a className=" hover:text-gray-500" href="/submit">
+                Submit
               </a>
             </li>
             <li className="mr-6 flex-none">
