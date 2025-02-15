@@ -1,23 +1,36 @@
-import { useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import "./App.css";
-import papersJSON from "./assets/papers.json"
-import PapersList from "./papersList";
-import Layout from "./layout";
+import papersJSON from "./assets/papers.json";
+import PaperType from "./interfaces/paper";
+import { BaseContent } from "./routes/BaseContent";
+import { Home } from "./routes/Home";
+import { PaperPage } from "./routes/PaperPage";
+import { Submit } from "./routes/Submit";
+import { stripPunctuation } from "./utils";
 function App() {
-  const [keywords, setKeywords] = useState([""])
-  const papers = papersJSON.papers.map(paper => {return {...paper, id : crypto.randomUUID()} })
-
+  const papers: PaperType[] = papersJSON.papers.map((p) => {
+    return {
+      ...p,
+      id: crypto.randomUUID(),
+      url: `${stripPunctuation(p.author.split(" ")[0])}-${
+        p.year
+      }`.toLowerCase(), // TODO replace with cleaned paper title
+    };
+  });
   return (
     <>
-    <Layout>
-    <div>
-      <label className="text-black">
-        Keyword Filter:&ensp;
-        <input name="myInput" className="border-2 rounded-xl"value={keywords} onChange={e => setKeywords(e.target.value.replace(' ',"").split(","))}/>
-      </label>
-        <PapersList papers={papers} keywordFilter={keywords}/>
-      </div>
-      </Layout>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate replace to="pl-hci-papers" />} />
+          <Route path="pl-hci-papers" element={<BaseContent />}>
+            <Route index element={<Home papers={papers} />} />
+            {papers.map((p) => (
+              <Route path={p.url} element={<PaperPage {...p} />} />
+            ))}
+            <Route path="submit" element={<Submit />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
