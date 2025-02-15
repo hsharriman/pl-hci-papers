@@ -1,3 +1,4 @@
+import { NavLink } from "react-router";
 const Header = () => {
   return (
     <header className="">
@@ -8,14 +9,16 @@ const Header = () => {
           </a>
         </h1>
 
-  
         <div className="grow self-stretch"></div>
         <section className="text-2 text-lg sm:text-lg tracking-tighter text-center leading-tight pl-4 md:pl-0 pr-1 pt-4 justify-self-right">
           <ul className="flex">
             <li className="mr-6 flex-none">
-              <a className=" hover:text-gray-500" href="/submit">
+              <NavLink
+                to="/pl-hci-papers/submit"
+                className="hover:text-gray-500"
+              >
                 Submit
-              </a>
+              </NavLink>
             </li>
             <li className="mr-6 flex-none">
               <a className=" hover:text-gray-500" href="/">
