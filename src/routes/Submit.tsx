@@ -5,7 +5,7 @@ import "@citation-js/plugin-doi";
 import Button from "@mui/joy/Button";
 import Input from "@mui/joy/Input";
 import Textarea from "@mui/joy/Textarea";
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 const dateYear = (date: any) => date["date-parts"]?.[0]?.[0]?.toString();
 
@@ -50,12 +50,14 @@ export const Submit = () => {
     summary: "",
     notes: "",
   });
-  const handleChange = (event) => {
+  const handleChange = (
+    event: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
     if (name == "bibtex") {
-      Cite.async(event.target.value).then((data) => {
+      Cite.async(event.target.value).then((data: any) => {
         // Format output
         console.log(data?.data[0]);
         console.log(data?.data[0]?.title);
@@ -64,7 +66,7 @@ export const Submit = () => {
           ...values,
           title: data?.data[0]?.title,
           authors: data?.data[0]?.author
-            .flatMap((entry) => entry.given + " " + entry.family)
+            .flatMap((entry: any) => entry.given + " " + entry.family)
             .join(", "),
           year: dateYear(data?.data[0]?.issued),
           link: data?.data[0]?.URL,
@@ -74,8 +76,8 @@ export const Submit = () => {
       });
     }
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log(inputs);
   };
   return (

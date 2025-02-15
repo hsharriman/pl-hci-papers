@@ -1,5 +1,4 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
-import "./App.css";
 import papersJSON from "./assets/papers.json";
 import PaperType from "./interfaces/paper";
 import { BaseContent } from "./routes/BaseContent";
@@ -21,13 +20,24 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate replace to="pl-hci-papers" />} />
-          <Route path="pl-hci-papers" element={<BaseContent />}>
-            <Route index element={<Home papers={papers} />} />
+          <Route
+            path="/"
+            element={<Navigate replace to="pl-hci-papers" />}
+            key="route-redirect"
+          />
+          <Route
+            path="pl-hci-papers"
+            element={<BaseContent />}
+            key="route-base"
+          >
+            <Route index element={<Home papers={papers} />} key="route-home" />
             {papers.map((p) => (
-              <Route path={p.url} element={<PaperPage {...p} />} />
+              <Route
+                path={p.url}
+                element={<PaperPage {...p} key={`route-${p.url}`} />}
+              />
             ))}
-            <Route path="submit" element={<Submit />} />
+            <Route path="submit" element={<Submit />} key="route-submit" />
           </Route>
         </Routes>
       </BrowserRouter>

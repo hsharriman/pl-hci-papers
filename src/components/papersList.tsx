@@ -1,12 +1,11 @@
 import { NavLink } from "react-router";
 import type Paper from "../interfaces/paper";
-import "./App.css";
+
 type Props = {
   papers: Paper[];
   keywordFilter: string[];
 };
 function PapersList({ papers, keywordFilter }: Props) {
-  console.log(papers);
   const papersListFiltered = papers.filter((paper: Paper) =>
     keywordFilter.every((keyword) => paper.keywords.includes(keyword))
   );
@@ -28,9 +27,9 @@ function PapersList({ papers, keywordFilter }: Props) {
                   <h1 className="text-base/0 text-bold mb-0">
                     <span className="text-base leading-0">{paper.title}</span>
                     &ensp;
-                    <a className="text-sm font-light italic text-portfolio text-accent-1">
+                    <div className="text-sm font-light italic text-portfolio text-accent-1">
                       {paper.venue}
-                    </a>
+                    </div>
                   </h1>
 
                   <h3 className="text-md font-thin mb-3 leading-snug italic">
