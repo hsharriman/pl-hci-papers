@@ -5,13 +5,9 @@ import Header from "../components/header";
 export const BaseContent = () => {
   return (
     <>
-      <div className="min-h-screen flex justify-center">
-        <div className="max-w-4xl bg-slate-200 ">
-          <Header />
-          <div>
-            <Outlet />
-          </div>
-        </div>
+      <div className="min-h-screen w-full flex justify-center flex-row content-start flex-wrap">
+        <Header />
+        <Outlet />
       </div>
       <Footer />
     </>

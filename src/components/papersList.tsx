@@ -1,5 +1,6 @@
 import { NavLink } from "react-router";
 import type Paper from "../interfaces/paper";
+import { PaperLinks } from "./PaperLinks";
 
 type Props = {
   papers: Paper[];
@@ -21,45 +22,39 @@ function PapersList({ papers, keywordFilter }: Props) {
       <div className="text-black">
         {papersToRender.map((paper) => {
           return (
-            <li key={paper.id}>
-              <div className="grow items-left text-left md:justify-between pl-5">
-                <NavLink to={"/pl-hci-papers/" + paper.url}>
-                  <h1 className="text-base/0 text-bold mb-0">
-                    <span className="text-base leading-0">{paper.title}</span>
-                    &ensp;
-                    <div className="text-sm font-light italic text-portfolio text-accent-1">
-                      {paper.venue}
-                    </div>
-                  </h1>
-
-                  <h3 className="text-md font-thin mb-3 leading-snug italic">
-                    {paper.author}
-                  </h3>
-                </NavLink>
-                <h4 className="text-sm font-light mb-3 leading-snug max-w-lg">
-                  {paper.summary}
-                </h4>
-                <div className="text-sm">
-                  <p>
-                    <a
-                      href={paper.link}
-                      className="underline hover:text-blue-600 duration-200 transition-colors"
-                    >
-                      PDF
-                    </a>
-                    &ensp;
-                    <a
-                      href={paper.doi}
-                      className="underline hover:text-blue-600 duration-200 transition-colors"
-                    >
-                      Link
-                    </a>
-                  </p>
-                  <div className="text-xs">
-                    Keywords: {paper.keywords.join(", ")}
+            <div
+              className="flex flex-col flex-wrap mt-4 max-w-[700px]"
+              key={paper.id}
+            >
+              <NavLink to={"/" + paper.url}>
+                <div className="flex flex-row gap-2 items-baseline mb-1">
+                  <div className="text-lg leading-6 font-bold text-wrap text-indigo-500 hover:text-indigo-400">
+                    {paper.title}
                   </div>
                 </div>
-                {/* <div className="mb-2 text-left">
+              </NavLink>
+              <div className="flex flex-row gap-2 items-baseline mb-1">
+                <div className="text-md mb-1 leading-snug italic font-semibold">
+                  {paper.author + ";"}
+                </div>
+                <div className="text-base italic text-portfolio text-accent-1 text-slate-600">
+                  {paper.venue}
+                </div>
+              </div>
+              <div className="text-sm mb-1 leading-snug">{paper.summary}</div>
+              <div className="text-base mb-1 flex flex-row flex-wrap gap-1 leading-tight">
+                Keywords:
+                {paper.keywords.map((k, i) => {
+                  const comma = i < paper.keywords.length - 1 ? ", " : "";
+                  return (
+                    <div className="underline underline-offset-2">{`${k}${comma}`}</div>
+                  );
+                })}
+              </div>
+              <div className="text-base">
+                <PaperLinks {...paper} />
+              </div>
+              {/* <div className="mb-2 text-left">
                         <div className="text-2xl">
                             {paper.title}
                         </div>
@@ -70,8 +65,7 @@ function PapersList({ papers, keywordFilter }: Props) {
                             {paper.keywords.join(", ")}
                         </div>
                     </div> */}
-              </div>
-            </li>
+            </div>
           );
         })}
       </div>
